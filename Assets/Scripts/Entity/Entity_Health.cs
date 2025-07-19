@@ -1,13 +1,17 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Entity_Health : MonoBehaviour, IDamageable
 {
+    private Slider _healthBar;
     private Entity_VFX _entityVFX;
     private Entity _entity;
+    private Entity_Stats _stats;
     
-    [SerializeField] protected float maxHp = 100;
+    // [SerializeField] protected float maxHp = 100;
     [SerializeField] protected float currentHp;
     [SerializeField] protected bool isDead;
 
@@ -24,17 +28,23 @@ public class Entity_Health : MonoBehaviour, IDamageable
     {
         _entity = GetComponent<Entity>();
         _entityVFX = GetComponent<Entity_VFX>();
+        _stats = GetComponent<Entity_Stats>();
+        _healthBar = GetComponentInChildren<Slider>();
+
+        currentHp = _stats.GetMaxHealth();
+        UpdateHealthBar();
     }
 
-    private void Start()
-    {
-        currentHp = maxHp;
-    }
-
-    public virtual void TakeDamage(float damage, Transform damageDealer)
+    public virtual bool TakeDamage(float damage, Transform damageDealer)
     {
         if (isDead)
-            return;
+            return false;
+
+        if (AttackEvaded())
+        {
+            Debug.Log($"{gameObject.name} evaded the attack!");
+            return false;
+        }
 
         float duration = CalculateDuration(damage);
         Vector2 knockBack = CalculateKnockBack(damage, damageDealer);
@@ -42,12 +52,16 @@ public class Entity_Health : MonoBehaviour, IDamageable
         _entityVFX?.PlayOnDamageVfx();
         _entity?.ReceiveKnockBack(knockBack, duration);
         ReduceDamage(damage);
+        
+        return true;
     }
+
+    private bool AttackEvaded() => Random.Range(0, 100) < _stats.GetEvasion();
 
     protected void ReduceDamage(float damage)
     {
-        // maxHp -= damage;
         currentHp -= damage;
+        UpdateHealthBar();
 
         if (currentHp <= 0)
             Die();
@@ -58,6 +72,8 @@ public class Entity_Health : MonoBehaviour, IDamageable
         isDead = true;
         _entity.EntityDeath(); 
     }
+
+    private void UpdateHealthBar() => _healthBar.value = currentHp / _stats.GetMaxHealth();
 
     private Vector2 CalculateKnockBack(float damage, Transform damageDealer)
     {
@@ -75,5 +91,5 @@ public class Entity_Health : MonoBehaviour, IDamageable
         return IsHeavyDamage(damage) ? heavyKnockBackDuration : knockBackDuration;
     }
 
-    private bool IsHeavyDamage(float damage) => damage / maxHp > heavyDamageThreshold;
+    private bool IsHeavyDamage(float damage) => damage / _stats.GetMaxHealth() > heavyDamageThreshold;
 }

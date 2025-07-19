@@ -1,31 +1,16 @@
 fileFormatVersion: 2
-guid: 9d4c0be8fb0b6c145a4f3bac0bc96091
+guid: 712819413aee565458700241f555b6e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1460114320316644248
-    second: Enemy_AttackAlert_Outline_0
+      213: -7125919759028226895
+    second: FX024_3_0
   - first:
-      213: 6037657260665563384
-    second: Enemy_AttackAlert_Outline_1
+      213: -9103172308898111054
+    second: FX024_3_1
   - first:
-      213: 3084388393096246226
-    second: Enemy_AttackAlert_Outline_2
-  - first:
-      213: -6558722525409247296
-    second: Enemy_AttackAlert_Outline_3
-  - first:
-      213: -5056620864572294909
-    second: Enemy_AttackAlert_Outline_4
-  - first:
-      213: 8436336418516199104
-    second: Enemy_AttackAlert_Outline_5
-  - first:
-      213: 199579530897463545
-    second: Enemy_AttackAlert_Outline_6
-  - first:
-      213: 6947890740666807062
-    second: Enemy_AttackAlert_Outline_7
+      213: -6028084499043218234
+    second: FX024_3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_AttackAlert_Outline_0
+      name: FX024_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
+        x: 22
+        y: 28
+        width: 39
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 864c01ef2c1acbbe0800000000000000
-      internalID: -1460114320316644248
+      spriteID: 1b47f21ebb5ab1d90800000000000000
+      internalID: -7125919759028226895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_AttackAlert_Outline_1
+      name: FX024_3_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
+        x: 30
+        y: 22
+        width: 13
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f867892a411ac350800000000000000
-      internalID: 6037657260665563384
+      spriteID: 2b1a4f604090ba180800000000000000
+      internalID: -9103172308898111054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_AttackAlert_Outline_2
+      name: FX024_3_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 42
+        y: 16
+        width: 13
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,30 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d3f6d7d6e2fdca20800000000000000
-      internalID: 3084388393096246226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_AttackAlert_Outline_3
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0cff0acdc9cbaf4a0800000000000000
-      internalID: -6558722525409247296
+      spriteID: 6cc8d761611f75ca0800000000000000
+      internalID: -6028084499043218234
       vertices: []
       indices: 
       edges: []
@@ -212,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: da30e1b4122711c43b9c1cdd09b48a43
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -222,10 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemy_AttackAlert_Outline_0: -1460114320316644248
-      Enemy_AttackAlert_Outline_1: 6037657260665563384
-      Enemy_AttackAlert_Outline_2: 3084388393096246226
-      Enemy_AttackAlert_Outline_3: -6558722525409247296
+      FX024_3_0: -7125919759028226895
+      FX024_3_1: -9103172308898111054
+      FX024_3_2: -6028084499043218234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
