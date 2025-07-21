@@ -17541,6 +17541,7 @@ GameObject:
   - component: {fileID: 539541371}
   - component: {fileID: 539541372}
   - component: {fileID: 539541373}
+  - component: {fileID: 539541374}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -17702,6 +17703,7 @@ MonoBehaviour:
   hitVfxColor: {r: 1, g: 0, b: 0.6392157, a: 1}
   hitVfx: {fileID: 5008911873965906751, guid: d7115920e7b8c344da854ea2685c4d63, type: 3}
   critHitVfx: {fileID: 4918664481128076630, guid: 8d1d97816a2b98b4b80de8dbcc6c6d9d, type: 3}
+  chillVfx: {r: 0, g: 0.78015685, b: 1, a: 0}
 --- !u!114 &539541372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17714,13 +17716,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd3ec08547a8a240860a98383f2c42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   targetCheck: {fileID: 1429141916}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
-  counterRecovery: 0.25
+  defaultDuration: 3
+  chillSlowMultiplier: 0.2
+  counterRecovery: 0.4
 --- !u!114 &539541373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17733,6 +17736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2cd08fa242d3d45afa02b80f198cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 0
   maxHealth:
     baseValue: 1000
   major:
@@ -17748,13 +17752,15 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 250
+      baseValue: 0
     critChance:
-      baseValue: 60
+      baseValue: 0
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:
-      baseValue: 0
+      baseValue: 30
     lightningDamage:
       baseValue: 0
   defense:
@@ -17768,6 +17774,18 @@ MonoBehaviour:
       baseValue: 0
     lightningRes:
       baseValue: 0
+--- !u!114 &539541374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539541364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8909c8668a571c45a9f3e9db727f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &558455391
 GameObject:
   m_ObjectHideFlags: 0
@@ -68770,6 +68788,7 @@ GameObject:
   - component: {fileID: 1293566858}
   - component: {fileID: 1293566859}
   - component: {fileID: 1293566860}
+  - component: {fileID: 1293566861}
   m_Layer: 8
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -68911,12 +68930,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a394241292abe44b9df0d98be556ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   targetCheck: {fileID: 850159372}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
+  defaultDuration: 3
+  chillSlowMultiplier: 0.2
 --- !u!114 &1293566858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68953,6 +68973,7 @@ MonoBehaviour:
   hitVfxColor: {r: 0.14245105, g: 1, b: 0, a: 1}
   hitVfx: {fileID: 5008911873965906751, guid: d7115920e7b8c344da854ea2685c4d63, type: 3}
   critHitVfx: {fileID: 4918664481128076630, guid: 8d1d97816a2b98b4b80de8dbcc6c6d9d, type: 3}
+  chillVfx: {r: 0, g: 0.78039217, b: 1, a: 0}
   attackAlert: {fileID: 979170874}
 --- !u!114 &1293566860
 MonoBehaviour:
@@ -68966,6 +68987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2cd08fa242d3d45afa02b80f198cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 0
   maxHealth:
     baseValue: 1000
   major:
@@ -68984,12 +69006,14 @@ MonoBehaviour:
       baseValue: 0
     critChance:
       baseValue: 0
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:
-      baseValue: 0
+      baseValue: 25
     lightningDamage:
-      baseValue: 0
+      baseValue: 6
   defense:
     armor:
       baseValue: 0
@@ -69001,6 +69025,18 @@ MonoBehaviour:
       baseValue: 0
     lightningRes:
       baseValue: 0
+--- !u!114 &1293566861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293566852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8909c8668a571c45a9f3e9db727f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300393154
 GameObject:
   m_ObjectHideFlags: 0
@@ -69349,6 +69385,7 @@ MonoBehaviour:
   hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
   hitVfx: {fileID: 0}
   critHitVfx: {fileID: 0}
+  chillVfx: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1429141915
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,9 +24,10 @@ public class Entity : MonoBehaviour
     public bool groundDetected { get; private set; }
     public bool wallDetected { get; private set; }
     
-    // KnockBack variables
-    private Coroutine _knockBackCo;
+    // Condition variables
     private bool _isKnocked;
+    private Coroutine _knockBackCo;
+    private Coroutine _slowDownCo;
     
     protected virtual void Awake()
     {
@@ -51,6 +52,19 @@ public class Entity : MonoBehaviour
         
     }
 
+    public virtual void SlowDownEntity(float duration, float slowMultiplier)
+    {
+        if (_slowDownCo != null)
+            StopCoroutine(_slowDownCo);
+
+        _slowDownCo = StartCoroutine(SlowDownEntityCo(duration, slowMultiplier));
+    }
+
+    protected virtual IEnumerator SlowDownEntityCo(float duration, float slowMultiplier)
+    {
+        yield return null;
+    }
+    
     public void ReceiveKnockBack(Vector2 knockBack, float duration)
     {
         if (_knockBackCo != null)
