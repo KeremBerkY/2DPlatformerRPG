@@ -8,12 +8,13 @@ public abstract class PlayerState : EntityState
     public PlayerState(Player player, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
     {
         this.player = player;
-        this.stateMachine = stateMachine;
-        this.animBoolName = animBoolName;
+        // this.stateMachine = stateMachine;
+        // this.animBoolName = animBoolName;
 
         anim = player.anim;
         rb = player.rb;
         input = player.input;
+        stats = player.stats;
     }
     
 

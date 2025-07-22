@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Entity_VFX : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Entity_VFX : MonoBehaviour
 
    [Header("On Doing Damage VFX")] 
    [SerializeField] private Color chillVfx = Color.cyan;
+   [SerializeField] private Color burnVfx = Color.red;
+   [SerializeField] private Color electrifyVfx = Color.yellow;
    private Color _originalHitVfxColor;
    private Coroutine statusVfxCo;
    
@@ -35,6 +38,19 @@ public class Entity_VFX : MonoBehaviour
    {
       if (element == ElementType.Ice)
          StartCoroutine(PlayStatusVfxCo(duration, chillVfx));
+      
+      if (element == ElementType.Fire)
+         StartCoroutine(PlayStatusVfxCo(duration, burnVfx));
+      
+      if (element == ElementType.Lightning)
+         StartCoroutine(PlayStatusVfxCo(duration, electrifyVfx));
+   }
+
+   public void StopAllVfx()
+   {
+      StopAllCoroutines();
+      _sr.color = Color.white;
+      _sr.material = _originalMaterial;
    }
 
    private IEnumerator PlayStatusVfxCo(float duration, Color effectColor)
