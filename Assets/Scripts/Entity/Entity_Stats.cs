@@ -5,19 +5,20 @@ using Random = UnityEngine.Random;
 
 public class Entity_Stats : MonoBehaviour
 {
+   [FormerlySerializedAs("setup")] public Stat_SetupSO defaultStatSetup;
+   
    public Stat_ResourceGroup resources;
-   public Stat_MajorGroup major;
    public Stat_OffenseGroup offense;
    public Stat_DefenseGroup defense;
+   public Stat_MajorGroup major;
 
    public float GetElementalDamage(out ElementType element, float scaleFactor = 1)
    {
       float fireDamage = offense.fireDamage.GetValue();
       float iceDamage = offense.iceDamage.GetValue();
       float lightningDamage = offense.lightningDamage.GetValue();
-
-      float bonusElementalDamage = major.intelligence.GetValue(); // Bonus elemental damage from Intelligence +1 per S
-
+      float bonusElementalDamage = major.intelligence.GetValue();
+     
       float highestDamage = fireDamage;
       element = ElementType.Fire;
 
@@ -39,9 +40,9 @@ public class Entity_Stats : MonoBehaviour
          return 0;
       }
 
-      float bonusFire = (fireDamage == highestDamage) ? 0 : fireDamage * .5f;
-      float bonusIce = (iceDamage == highestDamage) ? 0 : iceDamage * .5f;
-      float bonusLightning = (lightningDamage == highestDamage) ? 0 : lightningDamage * .5f;
+      float bonusFire = (element == ElementType.Fire) ? 0 : fireDamage * .5f;
+      float bonusIce = (element == ElementType.Ice) ? 0 : iceDamage * .5f;
+      float bonusLightning = (element == ElementType.Lightning) ? 0 : lightningDamage * .5f;
 
       float weakerElementsDamage = bonusFire + bonusIce + bonusLightning;
       float finalDamage = highestDamage + weakerElementsDamage + bonusElementalDamage;
@@ -140,5 +141,106 @@ public class Entity_Stats : MonoBehaviour
       float finalMaxHealth = baseMaxHealth + bonusMaxHealth;
 
       return finalMaxHealth;
+   }
+
+   public Stat GetStatByType(StatType type)
+   {
+      switch (type)
+      {
+         // Resources
+         case StatType.MaxHealth:
+            return resources.maxHeath;
+         case StatType.HealthRegen:
+            return resources.healthRegen;
+         
+         // Major Stats
+         case StatType.Strength:
+            return major.strength;
+         case StatType.Agility: 
+            return major.agility;
+         case StatType.Intelligence:
+            return major.intelligence;
+         case StatType.Vitality:
+            return major.vitality;
+         
+         // Offense
+         case StatType.AttackSpeed:
+            return offense.attackSpeed;
+         case StatType.Damage:
+            return offense.damage;
+         case StatType.CritChance:
+            return offense.critChance;
+         case StatType.CritPower:
+            return offense.critPower;
+         case StatType.ArmorReduction:
+            return offense.armorReduction;
+         
+            // Offense Elements
+         case StatType.FireDamage:
+            return offense.fireDamage;
+         case StatType.IceDamage:
+            return offense.iceDamage;
+         case StatType.LightningDamage:
+            return offense.lightningDamage;
+         
+            // Defense
+         case StatType.Armor:
+            return defense.armor;
+         case StatType.Evasion:
+            return defense.evasion;
+         
+            // Defense Elements
+         case StatType.IceResistance:
+            return defense.iceRes;
+         case StatType.FireResistance:
+            return defense.fireRes;
+         case StatType.LightningResistance:
+            return defense.lightningRes;
+         
+         default:
+            Debug.Log($"StatType {type} not implemented yet.");
+            return null;
+      }
+   }
+
+   [ContextMenu("Update Default Stat Setup")]
+   public void ApplyDefaultStatSetup()
+   {
+      if (defaultStatSetup == null)
+      {
+         Debug.Log("No default stat setup assigned");
+         return;
+      }
+      
+      // Resources
+      resources.maxHeath.SetBaseValue(defaultStatSetup.maxHealth);
+      resources.healthRegen.SetBaseValue(defaultStatSetup.healthRegen);
+      
+      // Major Stats
+      major.strength.SetBaseValue(defaultStatSetup.strength);
+      major.agility.SetBaseValue(defaultStatSetup.agility);
+      major.intelligence.SetBaseValue(defaultStatSetup.intelligence);
+      major.vitality.SetBaseValue(defaultStatSetup.vitality);
+      
+      // Offense
+      offense.attackSpeed.SetBaseValue(defaultStatSetup.attackSpeed);
+      offense.damage.SetBaseValue(defaultStatSetup.damage);
+      offense.critChance.SetBaseValue(defaultStatSetup.critChance);
+      offense.critPower.SetBaseValue(defaultStatSetup.critPower);
+      offense.armorReduction.SetBaseValue(defaultStatSetup.armorReduction);
+      
+      // Offense Elemental
+      offense.iceDamage.SetBaseValue(defaultStatSetup.iceDamage);
+      offense.fireDamage.SetBaseValue(defaultStatSetup.fireDamage);
+      offense.lightningDamage.SetBaseValue(defaultStatSetup.lightningDamage);
+      
+      // Defense
+      defense.armor.SetBaseValue(defaultStatSetup.armor);
+      defense.evasion.SetBaseValue(defaultStatSetup.evasion);
+      
+      // Defense Elemental
+      defense.iceRes.SetBaseValue(defaultStatSetup.iceResistance);
+      defense.fireRes.SetBaseValue(defaultStatSetup.fireResistance);
+      defense.lightningRes.SetBaseValue(defaultStatSetup.lightningResistance);
    }
 }
