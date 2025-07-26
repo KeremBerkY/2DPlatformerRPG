@@ -12,15 +12,15 @@ public class UI_TreeConnectDetails
 
 public class UI_TreeConnectHandler : MonoBehaviour
 {
-    private RectTransform _rect;
+    private RectTransform _rect => GetComponent<RectTransform>();
     [SerializeField] private UI_TreeConnectDetails[] connectionDetails;
     [SerializeField] private UI_TreeConnection[] connections;
 
     private void OnValidate()
     {
-        if (_rect == null)
-            _rect = GetComponent<RectTransform>();
-                
+        if (connectionDetails.Length <= 0)
+            return;
+        
         if (connectionDetails.Length != connections.Length)
             Debug.Log("Amount of details should be same as amount of connections. - " + gameObject.name);
         

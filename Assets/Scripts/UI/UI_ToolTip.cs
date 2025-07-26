@@ -6,7 +6,7 @@ public class UI_ToolTip : MonoBehaviour
     private RectTransform _rect;
     [SerializeField] private Vector2 offset = new Vector2(300, 20);
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rect = GetComponent<RectTransform>();
     }
