@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac8a54af5b22014cb59345cfc7450d4, type: 3}
+  m_Name: skill data - Time Echo
+  m_EditorClassIdentifier: 
+  cost: 1
+  displayName: Time Echo
+  description: 'Creae a time echo of yourself.
+
+    The echo will distracts enemies.'
+  icon: {fileID: 757673035, guid: 3cf7cc453c7e42b49929474b20befd88, type: 3}
