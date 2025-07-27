@@ -41,8 +41,11 @@ public class UI_ToolTip : MonoBehaviour
         else
             targetPosition.y = screenBottom + verticalHalf + offset.y;
         
-            
-        
         _rect.position = targetPosition;
+    }
+    
+    protected string GetColoredText(string color, string text)
+    {
+        return $"<color={color}>{text}</color>";
     }
 }
