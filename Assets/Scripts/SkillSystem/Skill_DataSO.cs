@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,7 +7,7 @@ public class Skill_DataSO : ScriptableObject
 {
     public int cost;
     public SkillType skillType;
-    public SkillUpgradeType upgradeType;
+    public UpgradeData upgradeData;
     
     [Header("Skill Description")]
     public string displayName;
@@ -15,4 +16,11 @@ public class Skill_DataSO : ScriptableObject
     public Sprite icon;
     
     // TODO: Skill type that you should unlock
+}
+
+[Serializable]
+public class UpgradeData
+{
+    public SkillUpgradeType UpgradeType;
+    public float cooldown;
 }

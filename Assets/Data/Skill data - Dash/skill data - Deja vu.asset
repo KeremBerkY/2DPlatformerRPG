@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 3
   skillType: 0
-  upgradeType: 2
+  upgradeData:
+    UpgradeType: 2
+    cooldown: 3
   displayName: Deja vu
   description: 'Create a time echo on arrival.
 

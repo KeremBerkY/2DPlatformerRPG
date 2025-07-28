@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class Entity_VFX : MonoBehaviour
 {
-   private SpriteRenderer _sr;
+   protected SpriteRenderer _sr;
    private Entity _entity;
 
    [Header("On Taking Damage VFX")] 
