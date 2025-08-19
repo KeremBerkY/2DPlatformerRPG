@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ac8a54af5b22014cb59345cfc7450d4, type: 3}
-  m_Name: skill data - Time shard
+  m_Name: skill data - Vital Anchor
   m_EditorClassIdentifier: 
-  cost: 0
-  unlockByDefault: 1
+  cost: 3
+  unlockByDefault: 0
   skillType: 2
   upgradeData:
-    UpgradeType: 6
-    cooldown: 1
-  displayName: Time shard
-  description: 'Create a shard filled with elemental magic.
-
-    The shard explodes
-    when touched by an enemy or time goes up'
-  icon: {fileID: 1343627056, guid: 3cf7cc453c7e42b49929474b20befd88, type: 3}
+    UpgradeType: 10
+    cooldown: 4
+  displayName: Vital Anchor
+  description: When you swap places with the time shard, your heath reverts to the
+    amount you had when time shard was created.
+  icon: {fileID: 1079446270, guid: 3cf7cc453c7e42b49929474b20befd88, type: 3}

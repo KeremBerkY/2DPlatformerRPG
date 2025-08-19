@@ -106,6 +106,14 @@ public class Entity_Health : MonoBehaviour, IDamageable
         _entity.EntityDeath(); 
     }
 
+    public float GetHealthPercent() => currentHealth / _entityStats.GetMaxHealth();
+
+    public void SetHealthToPercent(float percent)
+    {
+        currentHealth = _entityStats.GetMaxHealth() * Mathf.Clamp01(percent);
+        UpdateHealthBar();
+    }
+
     private void UpdateHealthBar() => _healthBar.value = currentHealth / _entityStats.GetMaxHealth();
 
     private Vector2 CalculateKnockBack(float damage, Transform damageDealer)

@@ -5,13 +5,18 @@ using Random = UnityEngine.Random;
 
 public class Entity_Stats : MonoBehaviour
 {
-   [FormerlySerializedAs("setup")] public Stat_SetupSO defaultStatSetup;
+   public Stat_SetupSO defaultStatSetup;
    
    public Stat_ResourceGroup resources;
    public Stat_OffenseGroup offense;
    public Stat_DefenseGroup defense;
    public Stat_MajorGroup major;
 
+   public AttackData GetAttackData(DamageScaleData scaleData)
+   {
+      return new AttackData(this, scaleData);
+   }
+   
    public float GetElementalDamage(out ElementType element, float scaleFactor = 1)
    {
       float fireDamage = offense.fireDamage.GetValue();
